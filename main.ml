@@ -63,7 +63,7 @@ end
 module Templates : sig
   (** Render the model using HTML elements. *)
 
-  val main :  Html5_types.div_content Tyxml_js.Html5.elt list
+  val main :  Html5_types.div Tyxml_js.Html5.elt
   (** List of elements to place inside the top-level <div> *)
 end = struct
   module R = Tyxml_js.R.Html5   (* Reactive elements, using signals *)
@@ -74,7 +74,7 @@ end = struct
   let onclick fn =
     a_onclick (fun _ev -> fn (); true)
 
-  let main = [
+  let main = div [
     div ~a:[a_class ["display"]] [R.pcdata Model.display];
     button ~a:[onclick Model.start] [pcdata "Start"];
     button ~a:[onclick Model.stop] [pcdata "Stop"];
@@ -83,11 +83,6 @@ end
 
 (* Initialisation code, called at start-up. *)
 let () =
-  (* Find the <div id='main'> element and add [Templates.main] to it. *)
-  match Dom_html.tagged (Dom_html.getElementById "main") with
-  | Dom_html.Div div ->
-      Templates.main |> List.iter (fun child ->
-        div##appendChild (Tyxml_js.To_dom.of_node child) |> ignore
-      )
-  | _ ->
-      failwith "'main' element is not a <div>!"
+  (* Add [Templates.main] to the <body>. *)
+  let main_div = Tyxml_js.To_dom.of_node Templates.main in
+  Dom_html.document##body##appendChild(main_div) |> ignore
