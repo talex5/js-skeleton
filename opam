@@ -1,0 +1,18 @@
+opam-version: "1.2"
+name: "js-skeleton"
+version: "dev"
+maintainer: "Thomas Leonard <talex5@gmail.com>"
+authors: "Thomas Leonard <talex5@gmail.com>"
+homepage: "https://github.com/talex5/js-skeleton"
+bug-reports: "https://github.com/talex5/js-skeleton/issues"
+license: "BSD-2-Clause"
+dev-repo: "https://github.com/talex5/js-skeleton.git"
+build: [
+  [make]
+]
+depends: [
+  "tyxml"
+  "reactiveData"
+  "js_of_ocaml"
+  "ocamlfind" {build}
+]

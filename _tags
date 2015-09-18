@@ -1,0 +1,2 @@
+true: strict_sequence, bin_annot, warn(A-4)
+true: syntax(camlp4o), package(lwt, js_of_ocaml.syntax,js_of_ocaml,js_of_ocaml.tyxml,unix)
