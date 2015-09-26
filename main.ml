@@ -64,7 +64,7 @@ module Templates : sig
   (** Render the model using HTML elements. *)
 
   val main :  Html5_types.div Tyxml_js.Html5.elt
-  (** List of elements to place inside the top-level <div> *)
+  (** The <div> element for the app. *)
 end = struct
   module R = Tyxml_js.R.Html5   (* Reactive elements, using signals *)
   open Tyxml_js.Html5           (* Ordinary, non-reactive HTML elements *)

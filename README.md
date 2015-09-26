@@ -22,6 +22,8 @@ Build:
 
 To run, open `index.html` in a browser.
 
+All the code is in `main.ml` and is well commented.
+
 
 Conditions
 ----------
