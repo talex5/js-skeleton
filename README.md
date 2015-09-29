@@ -14,8 +14,7 @@ It should be available through your distribution, but you can use a [generic opa
 
 Install dependencies:
 
-    opam install ocamlfind
-    opam install tyxml reactiveData js_of_ocaml
+    opam install ocamlfind tyxml reactiveData js_of_ocaml
 
 Build:
 
