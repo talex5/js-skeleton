@@ -32,6 +32,7 @@ module Model : sig
   (** The core application logic. *)
 
   val display : string S.t  (** The output value to display on the screen *)
+
   val start : unit -> unit
   val stop : unit -> unit
 end = struct
@@ -63,11 +64,11 @@ end
 module Templates : sig
   (** Render the model using HTML elements. *)
 
-  val main :  Html5_types.div Tyxml_js.Html5.elt
+  val main :  Html_types.div Tyxml_js.Html.elt
   (** The <div> element for the app. *)
 end = struct
-  module R = Tyxml_js.R.Html5   (* Reactive elements, using signals *)
-  open Tyxml_js.Html5           (* Ordinary, non-reactive HTML elements *)
+  module R = Tyxml_js.R.Html   (* Reactive elements, using signals *)
+  open Tyxml_js.Html           (* Ordinary, non-reactive HTML elements *)
 
   (* An "onclick" attribute that calls [fn] and returns [true],
    * ignoring the event object. *)
@@ -84,5 +85,4 @@ end
 (* Initialisation code, called at start-up. *)
 let () =
   (* Add [Templates.main] to the <body>. *)
-  let main_div = Tyxml_js.To_dom.of_node Templates.main in
-  Dom_html.document##body##appendChild(main_div) |> ignore
+  Tyxml_js.Register.body [Templates.main]
