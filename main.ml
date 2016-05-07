@@ -32,6 +32,7 @@ module Model : sig
   (** The core application logic. *)
 
   val display : string S.t  (** The output value to display on the screen *)
+
   val start : unit -> unit
   val stop : unit -> unit
 end = struct
